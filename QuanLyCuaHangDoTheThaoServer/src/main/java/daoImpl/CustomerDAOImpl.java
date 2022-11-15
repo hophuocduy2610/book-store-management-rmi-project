@@ -41,6 +41,12 @@ public class CustomerDAOImpl extends AbstractDAOImpl implements CustomerDAO {
 		String sql = "SELECT * FROM Customer WHERE customerID = '" + customerID + "'";
 		return (Customer) getSingle(sql, Customer.class);
 	}
+	
+	public Customer getCustomerByPhoneNumber(String phoneNumber) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM Customer WHERE phone = '" + phoneNumber + "'";
+		return (Customer) getSingle(sql, Customer.class);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Customer> getCustomerByName(String customerName) throws RemoteException {
@@ -76,5 +82,20 @@ public class CustomerDAOImpl extends AbstractDAOImpl implements CustomerDAO {
 	public int countCustomer() {
 		String sql = "SELECT COUNT(*) FROM Customer";
 		return (Integer) em.createNativeQuery(sql).getSingleResult();
+	}
+	
+	public boolean isExistCustomer(String phone) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql = "SELECT COUNT(*) FROM Customer WHERE phone = '" + phone + "'";
+			if(em.createNativeQuery(sql).getSingleResult().equals(1)) {
+				return true;
+			}
+			return false;
+	}
+
+	public String getNameCustomerByID(String customerID) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql = "SELECT name FROM Customer WHERE customerID = '" + customerID + "'";
+		return (String) getSingle(sql, Customer.class);
 	}
 }

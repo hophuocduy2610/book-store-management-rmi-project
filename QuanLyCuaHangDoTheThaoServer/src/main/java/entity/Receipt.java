@@ -2,12 +2,14 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,6 +40,9 @@ public class Receipt implements Serializable{
 	
 	@Column(name = "status", columnDefinition = "BIT")
 	private int status;
+	
+	@OneToMany(mappedBy = "receipt")
+	private List<ReceiptDetail> receiptDetails;
 
 	public Receipt() {
 		super();
@@ -55,13 +60,32 @@ public class Receipt implements Serializable{
 	}
 
 
-	public String getId() {
+	public Receipt(String receiptID) {
+		super();
+		this.receiptID = receiptID;
+	}
+
+
+
+	public String getReceiptID() {
 		return receiptID;
 	}
 
-	public void setId(String receiptID) {
+
+	public void setReceiptID(String receiptID) {
 		this.receiptID = receiptID;
 	}
+
+
+	public List<ReceiptDetail> getReceiptDetails() {
+		return receiptDetails;
+	}
+
+
+	public void setReceiptDetails(List<ReceiptDetail> receiptDetails) {
+		this.receiptDetails = receiptDetails;
+	}
+
 
 	public Customer getCustomer() {
 		return customer;

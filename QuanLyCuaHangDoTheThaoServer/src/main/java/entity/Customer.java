@@ -9,40 +9,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "Customer")
-public class Customer implements Serializable{
+@Table(name = "Customer")
+public class Customer implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1597650198828382371L;
 
 	@Id
-	@Column(name= "customerID")
+	@Column(name = "customerID")
 	private String id;
-	
-	@Column(name= "name", columnDefinition = "NVARCHAR(200)")
+
+	@Column(name = "name", columnDefinition = "NVARCHAR(200)")
 	private String name;
-	
-	@Column(name= "gender", columnDefinition = "NVARCHAR(10)")
+
+	@Column(name = "gender", columnDefinition = "NVARCHAR(10)")
 	private String gender;
-	
-	@Column(name= "phone", columnDefinition = "VARCHAR(15)")
+
+	@Column(name = "phone", columnDefinition = "VARCHAR(15)")
 	private String phone;
-	
-	@Column(name= "email", columnDefinition = "VARCHAR(100)")
+
+	@Column(name = "email", columnDefinition = "VARCHAR(100)")
 	private String email;
-	
+
 	@Embedded
 	private Address address;
-	
+
 	@Column(columnDefinition = "BIT")
 	private int status;
-	
+
 	public Customer() {
 		super();
 	}
-	
-	//Constructor đầy đủ tham số
+
+	// Constructor đầy đủ tham số
 	public Customer(String id, String name, String gender, String phone, String email, Address address, int status) {
 		super();
 		this.id = id;
@@ -53,8 +53,8 @@ public class Customer implements Serializable{
 		this.address = address;
 		this.status = status;
 	}
-	
-	//Constructor dành cho cập nhật
+
+	// Constructor dành cho cập nhật
 	public Customer(String id, String name, String gender, String phone, String email, Address address) {
 		super();
 		this.id = id;
@@ -63,6 +63,11 @@ public class Customer implements Serializable{
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
+	}
+
+	public Customer(String id) {
+		super();
+		this.id = id;
 	}
 
 	public String getId() {

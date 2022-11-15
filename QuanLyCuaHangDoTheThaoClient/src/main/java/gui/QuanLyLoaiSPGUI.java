@@ -49,7 +49,7 @@ public class QuanLyLoaiSPGUI extends JFrame implements ActionListener{
 
 	@SuppressWarnings("serial")
 	public QuanLyLoaiSPGUI() throws RemoteException, MalformedURLException, NotBoundException {
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setTitle("HỆ THỐNG QUẢN LÝ LOẠI SẢN PHẨM");

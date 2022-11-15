@@ -62,6 +62,11 @@ public class Product implements Serializable{
 		this.status = status;
 	}
 
+	public Product(String id) {
+		super();
+		this.id = id;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -130,7 +135,7 @@ public class Product implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", productType="
-				+ productType + ", supplier=" + supplier + ", status=" + status + "]";
+		return "Product [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", importDate="
+				+ importDate + ", productType=" + productType + ", supplier=" + supplier + ", status=" + status + "]";
 	}
 }

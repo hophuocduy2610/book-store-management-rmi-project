@@ -27,6 +27,7 @@ public class AbstractDAOImpl extends UnicastRemoteObject{
 		try {
 			tr.begin();
 			em.persist(obj);
+			em.flush();
 			tr.commit();
 
 			return true;

@@ -78,4 +78,10 @@ public class StaffDAOImpl extends AbstractDAOImpl implements StaffDAO {
 		String sql = "SELECT COUNT(*) FROM Staff";
 		return (Integer) em.createNativeQuery(sql).getSingleResult();
 	}
+
+	public String getNameStaffByID(String staffID) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql = "SELECT name FROM Staff WHERE staffID = '" + staffID + "'";
+		return (String) getSingle(sql, Staff.class);
+	}
 }

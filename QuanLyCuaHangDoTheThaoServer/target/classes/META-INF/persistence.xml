@@ -7,8 +7,11 @@
 		<class>entity.Product</class>
 		<class>entity.ProductType</class>
 		<class>entity.Receipt</class>
+		<class>entity.ReceiptDetail</class>
+		<class>entity.ReceiptDetailPK</class>
 		<class>entity.Staff</class>
 		<class>entity.Supplier</class>
+		<class>entity.Account</class>
 		<properties>
 			<property name="hibernate.connection.driver_class"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />

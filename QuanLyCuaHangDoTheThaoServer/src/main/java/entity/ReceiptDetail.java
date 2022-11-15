@@ -1,4 +1,4 @@
-package entity;
+	package entity;
 
 import java.io.Serializable;
 
@@ -18,16 +18,6 @@ public class ReceiptDetail implements Serializable {
 	 */
 	private static final long serialVersionUID = 157015851742859362L;
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "receiptID")
-	private Receipt receipt;
-
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "productID")
-	private Product product;
-
 	private int quantity;
 
 	@Column(columnDefinition = "MONEY")
@@ -38,11 +28,21 @@ public class ReceiptDetail implements Serializable {
 	
 	@Column(columnDefinition = "BIT")
 	private int status;
+	
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "productID")
+	private Product product;
+	
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "receiptID")
+	private Receipt receipt;
 
 	public ReceiptDetail() {
 	}
 
-	public ReceiptDetail(Receipt receipt, Product product, int quantity, double unitPrice, double amount, int status) {
+	public ReceiptDetail (int quantity, double unitPrice, double amount, int status, Product product, Receipt receipt) {
 		this.receipt = receipt;
 		this.product = product;
 		this.quantity = quantity;
@@ -51,21 +51,6 @@ public class ReceiptDetail implements Serializable {
 		this.status = status;
 	}
 
-	public Receipt getReceipt() {
-		return receipt;
-	}
-
-	public void setReceipt(Receipt receipt) {
-		this.receipt = receipt;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 
 	public int getQuantity() {
 		return quantity;
@@ -98,10 +83,26 @@ public class ReceiptDetail implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	public Receipt getReceipt() {
+		return receipt;
+	}
+
+	public void setReceipt(Receipt receipt) {
+		this.receipt = receipt;
+	}
 
 	@Override
 	public String toString() {
-		return "ReceiptDetail [receipt=" + receipt + ", product=" + product + ", quantity=" + quantity + ", unitPrice="
-				+ unitPrice + ", amount=" + amount + ", status=" + status + "]";
+		return "ReceiptDetail [quantity=" + quantity + ", unitPrice=" + unitPrice + ", amount=" + amount + ", status="
+				+ status + ", product=" + product + ", receipt=" + receipt + "]";
 	}
 }

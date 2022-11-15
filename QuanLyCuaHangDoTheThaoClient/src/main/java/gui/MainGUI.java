@@ -19,7 +19,7 @@ public class MainGUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -3699048493099650171L;
 	private JPanel pnNorth, pnCenter;
 	private JButton btnThoat;
-	private JMenuItem item1, item2, item3, item4, item5, item6, item7;
+	private JMenuItem item1, item2, item3, item4, item5, item6, item7, item8;
 	private ImageIcon img;
 
 	public MainGUI() throws IOException {
@@ -121,12 +121,27 @@ public class MainGUI extends JFrame implements ActionListener {
 
 		menu3.add(item3);
 		
+//		==================================
+
+		JMenu menu6 = new JMenu();
+		bar1.add(Box.createHorizontalStrut(50));
+		bar1.add(menu6);
+		menu6.setBounds(350, 0, 150, 40);
+		menu6.setText("Tài khoản");
+		menu6.setIcon(new javax.swing.ImageIcon("assets/image/Login.png"));
+
+		item8 = new JMenuItem();
+		item8.setText("Quản Lý Tài Khoản");
+		item8.setIcon(new ImageIcon("assets/image/user_icon.png"));
+
+		menu6.add(item8);
+		
 //		============================
 
 		btnThoat = new JButton();
 		btnThoat.setBounds(0, 0, 60, 40);
 		btnThoat.setIcon(new ImageIcon("assets/image/exit.png"));
-		bar1.add(Box.createHorizontalStrut(385));
+		bar1.add(Box.createHorizontalStrut(230));
 		bar1.add(btnThoat);
 		btnThoat.setBackground(new Color(51, 255, 51));
 		btnThoat.addActionListener((Main) -> {
@@ -134,7 +149,9 @@ public class MainGUI extends JFrame implements ActionListener {
 					JOptionPane.YES_NO_OPTION);
 			if (loinhac == JOptionPane.YES_OPTION) {
 				JOptionPane.showMessageDialog(this, "Cảm ơn bạn đã sử dụng dịch vụ");
-				System.exit(0);
+				DangNhapGUI dangNhapGUI = new DangNhapGUI();
+				dangNhapGUI.setVisible(true);
+				setVisible(false);
 			}
 		});
 
@@ -189,9 +206,15 @@ public class MainGUI extends JFrame implements ActionListener {
 		});
 		
 		item5.addActionListener((e3) -> {
-			LapHoaDonGUI lapHoaDonGUI = new LapHoaDonGUI();
-			lapHoaDonGUI.setVisible(true);
-			setVisible(false);
+			LapHoaDonGUI lapHoaDonGUI;
+			try {
+				lapHoaDonGUI = new LapHoaDonGUI();
+				lapHoaDonGUI.setVisible(true);
+				setVisible(false);
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
 		
 		item6.addActionListener((e3) -> {
@@ -205,6 +228,18 @@ public class MainGUI extends JFrame implements ActionListener {
 			try {
 				quanLyLoaiSPGUI = new QuanLyLoaiSPGUI();
 				quanLyLoaiSPGUI.setVisible(true);
+				setVisible(false);
+			} catch (RemoteException | MalformedURLException | NotBoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
+		item8.addActionListener((e3) -> {
+			QuanLyTaiKhoanGUI quanLyTaiKhoanGUI;
+			try {
+				quanLyTaiKhoanGUI = new QuanLyTaiKhoanGUI();
+				quanLyTaiKhoanGUI.setVisible(true);
 				setVisible(false);
 			} catch (RemoteException | MalformedURLException | NotBoundException e) {
 				// TODO Auto-generated catch block

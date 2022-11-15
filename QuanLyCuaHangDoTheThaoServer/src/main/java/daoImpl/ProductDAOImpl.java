@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import dao.ProductDAO;
 import entity.Product;
@@ -79,15 +80,31 @@ public class ProductDAOImpl extends AbstractDAOImpl implements ProductDAO {
 		return (Integer) em.createNativeQuery(sql).getSingleResult();
 	}
 
-	public String getNameSupplierById(String supplierID) throws RemoteException {
+	public boolean isExistProduct(String productID) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql = "SELECT name FROM Supplier WHERE supplierID = '" + supplierID + "'";
-		return (String) em.createNativeQuery(sql).getSingleResult();
+		String sql = "SELECT COUNT(*) FROM Product WHERE productID = '" + productID + "'";
+		if (em.createNativeQuery(sql).getSingleResult().equals(1)) {
+			return true;
+		}
+		return false;
 	}
 
-	public String getNameProductTypeByID(String productTypeID) throws RemoteException {
+	public void updateQuantity(String productID, int quantity) throws RemoteException {
+		EntityTransaction tr = em.getTransaction();
+		try {
+			tr.begin();
+			String sql = "UPDATE Product SET quantity = " + quantity + " WHERE productID = '" + productID + "'";
+			em.createNativeQuery(sql).executeUpdate();
+			tr.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+		}
+	}
+
+	public String getNameProductByID(String productID) throws RemoteException {
 		// TODO Auto-generated method stub
-		String sql = "SELECT name FROM ProductType WHERE productTypeID = '" + productTypeID + "'";
+		String sql = "SELECT name FROM Product WHERE productID = '" + productID + "'";
 		return (String) em.createNativeQuery(sql).getSingleResult();
 	}
 }

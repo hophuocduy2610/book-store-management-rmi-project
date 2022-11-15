@@ -328,13 +328,6 @@ public class QuanLyKhachHangGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	// -
-//		btnTimKiem = new JButton("Tìm");
-//		btnTimKiem.setForeground(new Color(255, 255, 255));
-//		btnTimKiem.setBackground(new Color(0,0,205));
-//		btnTimKiem.setBounds(1210, 63, 70, 25);
-//		khung.add(btnTimKiem);
-
 //	//main
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

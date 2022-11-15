@@ -59,6 +59,11 @@ public class Staff implements Serializable{
 		this.status = status;
 	}
 
+	public Staff(String id) {
+		super();
+		this.id = id;
+	}
+
 	public String getId() {
 		return id;
 	}

@@ -11,7 +11,10 @@ public interface CustomerDAO extends Remote{
 	public boolean udateCustomer(Customer customer) throws RemoteException;
 	public boolean deleteCustomer(String customerID) throws RemoteException;
 	public Customer getCustomerById(String customerID) throws RemoteException;
+	public Customer getCustomerByPhoneNumber(String phoneNumber) throws RemoteException;
 	public List<Customer> getCustomerByName(String customerName) throws RemoteException;
 	public List<Customer> getListCustomers() throws RemoteException;
 	public String generateCustomerID() throws RemoteException;
+	public boolean isExistCustomer(String phone) throws RemoteException;
+	public String getNameCustomerByID(String customerID) throws RemoteException;
 }

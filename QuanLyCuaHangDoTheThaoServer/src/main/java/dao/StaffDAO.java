@@ -13,4 +13,5 @@ public interface StaffDAO extends Remote{
 	public List<Staff> getStaffByName(String staffName) throws RemoteException;
 	public List<Staff> getListStaffs() throws RemoteException;
 	public String generateStaffID() throws RemoteException;
+	public String getNameStaffByID(String staffID) throws RemoteException;
 }

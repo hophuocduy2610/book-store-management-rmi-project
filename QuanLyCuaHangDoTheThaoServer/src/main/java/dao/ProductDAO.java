@@ -14,6 +14,7 @@ public interface ProductDAO extends Remote{
 	public List<Product> getProductByName(String productName) throws RemoteException;
 	public List<Product> getListProducts() throws RemoteException;
 	public String generateProductID() throws RemoteException;
-	public String getNameSupplierById(String supplierID) throws RemoteException;
-	public String getNameProductTypeByID(String productTypeID) throws RemoteException;
+	public boolean isExistProduct(String productID) throws RemoteException;
+	public void updateQuantity(String productID, int quantity) throws RemoteException;
+	public String getNameProductByID(String productID) throws RemoteException;
 }
